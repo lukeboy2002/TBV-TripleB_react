@@ -43,3 +43,6 @@ yarn-error.log
 /boost.json
 /opencode.json
 /opencode.jsonc
+
+# Echte spelersgegevens (namen, e-mailadressen) nooit naar GitHub
+/database/seeders/data/players.json

@@ -45,7 +45,9 @@ return [
     |
     */
 
-    'username' => 'email',
+    // Het formulierveld heet "login": daarin mag een gebruikersnaam of e-mailadres.
+    // Het opzoeken van de speler gebeurt in FortifyServiceProvider::configureAuthentication().
+    'username' => 'login',
 
     'email' => 'email',
 

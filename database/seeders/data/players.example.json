@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Voornaam Achternaam",
+        "username": "beheerder",
+        "email": "beheerder@voorbeeld.nl",
+        "is_admin": true,
+        "password": "kies-een-wachtwoord"
+    },
+    {
+        "name": "Andere Speler",
+        "username": "speler",
+        "email": "speler@voorbeeld.nl"
+    }
+]
