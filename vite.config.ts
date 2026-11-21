@@ -13,8 +13,12 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
             refresh: true,
             fonts: [
-                bunny('Instrument Sans', {
-                    weights: [400, 500, 600],
+                // Figtree voor gewone tekst, Montserrat voor koppen (zoals de oude site).
+                bunny('Figtree', {
+                    weights: [400, 500, 600, 700],
+                }),
+                bunny('Montserrat', {
+                    weights: [600, 700, 800],
                 }),
             ],
         }),

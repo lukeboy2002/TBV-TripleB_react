@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Inertia\Inertia;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -42,6 +44,27 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'locale' => app()->getLocale(),
+            // De vertalingen voor de React-kant (gebruikt door useTranslation()).
+            // Inertia::once() zorgt dat ze maar één keer worden meegestuurd
+            // en daarna in de browser bewaard blijven.
+            'translations' => Inertia::once(fn () => $this->translations()),
         ];
+    }
+
+    /**
+     * Lees lang/<taal>.json, bijvoorbeeld lang/nl.json.
+     *
+     * @return array<string, string>
+     */
+    protected function translations(): array
+    {
+        $path = lang_path(app()->getLocale().'.json');
+
+        if (! File::exists($path)) {
+            return [];
+        }
+
+        return json_decode(File::get($path), true) ?? [];
     }
 }
