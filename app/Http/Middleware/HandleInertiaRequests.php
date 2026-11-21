@@ -41,9 +41,12 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'name' => config('app.name'),
             'auth' => [
-                'user' => $request->user(),
+                // Alleen de velden die de frontend nodig heeft, niet het hele model.
+                // ?-> : is er niemand ingelogd, dan wordt dit null.
+                'user' => $request->user()?->only([
+                    'id', 'name', 'username', 'email', 'is_admin', 'email_verified_at',
+                ]),
             ],
-            'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             'locale' => app()->getLocale(),
             // De vertalingen voor de React-kant (gebruikt door useTranslation()).
             // Inertia::once() zorgt dat ze maar één keer worden meegestuurd

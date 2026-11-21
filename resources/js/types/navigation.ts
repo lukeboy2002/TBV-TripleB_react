@@ -11,4 +11,6 @@ export type NavItem = {
     href: NonNullable<InertiaLinkProps['href']>;
     icon?: LucideIcon | null;
     isActive?: boolean;
+    highlight?: boolean; // de grote ronde knop in het midden van de tabbalk
+    shortTitle?: string; // kortere tekst voor de tabbalk op de telefoon
 };

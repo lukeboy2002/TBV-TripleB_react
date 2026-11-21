@@ -11,7 +11,7 @@ declare module '@inertiajs/core' {
         sharedPageProps: {
             name: string;
             auth: Auth;
-            sidebarOpen: boolean;
+            sidebarOpen?: boolean; // niet meer gedeeld; alleen nog voor de oude zijbalk-layout
             locale: string;
             translations: Record<string, string>;
             [key: string]: unknown;
